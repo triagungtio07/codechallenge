@@ -13,13 +13,13 @@ router.delete("/users", controller.users().delete );
 
 // // Routing tasks
 // // Create tasks
-router.post("/tasks", controller.task().post );
+router.post("/tasks", controller.tasks().post );
 // // Read tasks
-router.get("/tasks", controller.task().get );
+router.get("/tasks", controller.tasks().get );
 // // Update tasks
-router.put("/tasks", controller.task().put );
+router.put("/tasks", controller.tasks().put );
 // // Delete users
-router.delete("/tasks", controller.task().delete );
+router.delete("/tasks", controller.tasks().delete );
 
 
 module.exports = router

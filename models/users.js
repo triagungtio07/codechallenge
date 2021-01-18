@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      users.hasOne(models.tasks, {
-        foreignKey: 'userId'
-      })
+      // users.hasOne(models.tasks, {
+      //   foreignKey: 'users_Id'
+      // })
     }
   };
   users.init({

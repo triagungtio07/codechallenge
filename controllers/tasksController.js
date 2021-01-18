@@ -1,8 +1,43 @@
-class tasksController{
-    get(req,res){res.send("routing untuk read tasks")}
-    post(req,res){res.send("routing untuk create tasks")}
-    put(req,res){res.send("routing untuk update tasks")}
-    delete(req,res){res.send("routing untuk delete tasks")}
+const db = require('../models')
+
+class TasksController {
+    async get(req, res) {
+        const data = await db.tasks.findAll();
+        res.json(data);
+    }
+    async post(req, res) {
+        const user = req.body['users_id']
+        const description = req.body['description'];
+        const status = req.body['status']
+        await db.tasks.create({
+            users_id: user,
+            description: description,
+            status: status,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        })
+        res.send("sukses insert data tugas baru")
+    }
+    async put(req, res) {
+        const description = req.body['description'];
+        const status = req.body['status']
+        const id = req.body.id;
+        await db.tasks.update({
+            description: description,
+            status: status,
+        }, {
+            where: {
+                id: id
+            }
+        })
+        res.send(`succes update id ${id}`)
+    }
+    async delete(req, res) {
+        const id = req.query.id
+        await db.tasks.destroy({where: {id:id}})
+        res.send(`succes delete data from tasks with id ${id}`)
+    }
+
 }
 
-module.exports = Object.freeze(new tasksController())
+module.exports = Object.freeze(new TasksController())

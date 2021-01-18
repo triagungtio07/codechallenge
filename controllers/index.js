@@ -5,7 +5,7 @@ class Controller{
     users(){
         return usersController
     }
-    task(){
+    tasks(){
         return tasksController
     }
 }
