@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "triagungtio",
+    "username": "agung",
     "password": "Agun9!glints",
-    "database": "binaracademy2",
+    "database": "binaracademy",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
