@@ -1,9 +1,21 @@
+const { tasks } = require(".");
 const db = require("../models");
 
 class TasksController {
   async get(req, res) {
-    const data = await db.tasks.findAll({
+    const usersModel = db.users;
+    const tasksModel = db.tasks;
+
+    usersModel.hasMany(tasksModel);
+    tasksModel.belongsTo(usersModel, { foreignKey: "users_id" });
+    const data = await tasksModel.findAll({
       attributes: ["id", "users_id", "description", "status"],
+      include: [
+        {
+          model: usersModel,
+          attributes: ["full_name"],
+        },
+      ],
     });
     res.json(data);
   }

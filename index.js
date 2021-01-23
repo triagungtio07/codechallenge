@@ -10,4 +10,4 @@ app.use(bodyParser.json());
 
 app.use("/", routes);
 
-app.listen(5000, () => console.log("this app running on port 5000"));
+app.listen(5000, () => console.log("this app running on port 3000"));
